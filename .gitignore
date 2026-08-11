@@ -1,0 +1,67 @@
+# PlatformIO
+.pio
+.pioenvs
+.piolibdeps
+.vscode/extensions
+.vscode/.BROWSE.C_CPP.DB*
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/ipch/
+
+# Build outputs
+build/
+dist/
+*.o
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.project
+.cproject
+.settings/
+*.code-workspace
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.env
+venv/
+env/
+
+# Dependencies
+.git/
+node_modules/
+package-lock.json
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Generated files
+*.depend
+*.o.d
+.clang_complete
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# Debugging
+.gdbinit
+*.gdb
