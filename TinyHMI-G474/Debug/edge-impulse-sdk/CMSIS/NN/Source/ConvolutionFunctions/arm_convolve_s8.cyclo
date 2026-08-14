@@ -1,0 +1,2 @@
+../edge-impulse-sdk/CMSIS/NN/Source/ConvolutionFunctions/arm_convolve_s8.c:53:21:arm_convolve_s8	22
+../edge-impulse-sdk/CMSIS/NN/Source/ConvolutionFunctions/arm_convolve_s8.c:321:9:arm_convolve_s8_get_buffer_size	1

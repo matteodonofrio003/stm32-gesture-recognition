@@ -1,0 +1,46 @@
+edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.o: \
+ ../edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.cc \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/core/c/common.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/core/c/c_api_types.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_array.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_base.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_stl_emulation.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_vector.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_buffer.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_buffer_ref.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_verifier.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_detached_buffer.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_allocator.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_default_allocator.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_flatbuffer_builder.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_string.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_struct.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_table.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_vector_downward.h \
+ C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/schema/schema_utils.h
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/core/c/common.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/core/c/c_api_types.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_array.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_base.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_stl_emulation.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_vector.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_buffer.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_buffer_ref.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_verifier.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_detached_buffer.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_allocator.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_default_allocator.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_flatbuffer_builder.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_string.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_struct.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_table.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/fb_vector_downward.h:
+C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/schema/schema_utils.h:
