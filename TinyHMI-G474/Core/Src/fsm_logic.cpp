@@ -252,7 +252,11 @@ static int8_t FSM_Result() {
 }
 
 static int8_t FSM_StateError() {
+	int8_t res = FSM_OK;
+	if(led_toggle(fsm.L_STATUS) != LED_OK) res = FSM_ERR;
+	return res;
 
+	//to exit the user must click the reset button on the board
 }
 
 //********************************************************************************
