@@ -48,6 +48,8 @@ typedef struct FSM_s {
 	fsm_state_t state;
 	FSM_input_t in;
 	float inference_buffer[EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE];
+	char winning_label[32];
+	float winning_confidence;
 
 } FSM_t;
 
@@ -84,6 +86,8 @@ int8_t FSM_init(led_t* L_STATUS) {
 		fsm.sample_count = 0;
 		fsm.state = INIT;
 		fsm.in.new_data_available = 0;
+		fsm.winning_label[0] = '\0';
+		fsm.winning_confidence = 0.0f;
 		queue_init(&imu_queue, (uint8_t*)queue_buffer, 6 * sizeof(float), 60);
 		HAL_UARTEx_ReceiveToIdle_DMA(&hlpuart1, (uint8_t*)rx_buffer, 100);
 	} else
@@ -206,13 +210,33 @@ static int8_t FSM_Inference() {
         return FSM_ERR;
     }
 
+    uint8_t best_index = 0;
+    for(int i = 1; i < EI_CLASSIFIER_LABEL_COUNT; i++) {
+        if(result.classification[i].value > result.classification[best_index].value)
+            best_index = i;
+    }
+
+    strncpy(fsm.winning_label, result.classification[best_index].label, sizeof(fsm.winning_label) - 1);
+    fsm.winning_label[sizeof(fsm.winning_label) - 1] = '\0';
+    fsm.winning_confidence = result.classification[best_index].value;
+
     fsm.state = RESULT;
 
     return res;
 }
 
 static int8_t FSM_Result() {
+    int8_t res = FSM_OK;
 
+    if ((strcmp(fsm.winning_label, "circle") == 0) && (fsm.winning_confidence > 0.8f)) {
+        if (led_on(fsm.L_STATUS) != LED_OK) res = FSM_ERR;
+    } else {
+        if (led_off(fsm.L_STATUS) != LED_OK) res = FSM_ERR;
+    }
+
+    fsm.state = IDLE;
+
+    return res;
 }
 
 static int8_t FSM_StateError() {
