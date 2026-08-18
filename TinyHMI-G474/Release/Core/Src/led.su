@@ -1,0 +1,10 @@
+../Core/Src/led.c:4:8:led_init	16	static
+../Core/Src/led.c:23:8:led_write	8	static
+../Core/Src/led.c:37:8:led_on	0	static
+../Core/Src/led.c:42:8:led_off	0	static
+../Core/Src/led.c:47:8:led_set_toggle_period	0	static
+../Core/Src/led.c:60:8:led_get_toggle_period	0	static
+../Core/Src/led.c:73:8:led_toggle	8	static
+../Core/Src/led.c:95:15:led_get_status	0	static
+../Core/Src/led.c:108:15:led_get_port	0	static
+../Core/Src/led.c:121:15:led_get_pin_number	0	static

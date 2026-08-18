@@ -67,8 +67,8 @@ int8_t led_get_port(const led_t* led, GPIO_TypeDef** port);
  */
 int8_t led_get_pin_number(const led_t* led, uint16_t* number);
 
-
-#endif
 #ifdef __cplusplus
 }
+#endif
+
 #endif

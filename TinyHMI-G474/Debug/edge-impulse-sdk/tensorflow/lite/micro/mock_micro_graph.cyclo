@@ -7,5 +7,5 @@ C:\ST\STM32CubeIDE_2.1.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externalt
 ../edge-impulse-sdk/tensorflow/lite/micro/mock_micro_graph.cc:57:8:virtual size_t tflite::MockMicroGraph::NumSubgraphOutputs(int)	1
 ../edge-impulse-sdk/tensorflow/lite/micro/mock_micro_graph.cc:59:19:virtual TfLiteEvalTensor* tflite::MockMicroGraph::GetSubgraphOutput(int, int)	1
 ../edge-impulse-sdk/tensorflow/lite/micro/mock_micro_graph.cc:64:5:virtual int tflite::MockMicroGraph::NumSubgraphs()	1
-C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/mock_micro_graph.h:29:7:tflite::MockMicroGraph::~MockMicroGraph()	1
-C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/mock_micro_graph.h:29:7:virtual tflite::MockMicroGraph::~MockMicroGraph()	1
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/mock_micro_graph.h:29:7:tflite::MockMicroGraph::~MockMicroGraph()	1
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/mock_micro_graph.h:29:7:virtual tflite::MockMicroGraph::~MockMicroGraph()	1

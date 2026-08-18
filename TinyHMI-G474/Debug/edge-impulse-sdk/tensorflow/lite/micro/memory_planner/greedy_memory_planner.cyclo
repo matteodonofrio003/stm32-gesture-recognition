@@ -1,10 +1,10 @@
-C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/micro_memory_planner.h:47:3:tflite::MicroMemoryPlanner::MicroMemoryPlanner()	1
-C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/micro_memory_planner.h:48:11:tflite::MicroMemoryPlanner::~MicroMemoryPlanner()	1
-C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/micro_memory_planner.h:48:11:virtual tflite::MicroMemoryPlanner::~MicroMemoryPlanner()	1
-C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/micro_memory_planner.h:62:24:virtual TfLiteStatus tflite::MicroMemoryPlanner::AddBuffer(int, int, int, int)	1
-C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/micro_memory_planner.h:79:24:virtual TfLiteStatus tflite::MicroMemoryPlanner::Init(unsigned char*, int)	1
-C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/micro_memory_planner.h:84:16:virtual void tflite::MicroMemoryPlanner::PrintMemoryPlan()	1
-C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.h:100:17:static size_t tflite::GreedyMemoryPlanner::per_buffer_size()	1
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/micro_memory_planner.h:47:3:tflite::MicroMemoryPlanner::MicroMemoryPlanner()	1
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/micro_memory_planner.h:48:11:tflite::MicroMemoryPlanner::~MicroMemoryPlanner()	1
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/micro_memory_planner.h:48:11:virtual tflite::MicroMemoryPlanner::~MicroMemoryPlanner()	1
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/micro_memory_planner.h:62:24:virtual TfLiteStatus tflite::MicroMemoryPlanner::AddBuffer(int, int, int, int)	1
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/micro_memory_planner.h:79:24:virtual TfLiteStatus tflite::MicroMemoryPlanner::Init(unsigned char*, int)	1
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/micro_memory_planner.h:84:16:virtual void tflite::MicroMemoryPlanner::PrintMemoryPlan()	1
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.h:100:17:static size_t tflite::GreedyMemoryPlanner::per_buffer_size()	1
 ../edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc:27:6:char tflite::{anonymous}::GetOrdinalCharacter(int)	4
 ../edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc:43:6:void tflite::ReverseSortInPlace(int*, int*, int)	4
 ../edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc:61:1:tflite::GreedyMemoryPlanner::GreedyMemoryPlanner()	1

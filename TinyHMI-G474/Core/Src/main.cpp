@@ -24,7 +24,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "edge-impulse-sdk/classifier/ei_run_classifier.h"
+#include "fsm_logic.h"
+#include "led.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,7 +46,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+led_t L_STATUS;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -91,7 +92,8 @@ int main(void)
   MX_DMA_Init();
   MX_LPUART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  led_init(&L_STATUS, L_STATUS_GPIO_Port, L_STATUS_Pin, (led_state_t)LED_INIT_STATE_OFF);
+  FSM_init(&L_STATUS);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -101,6 +103,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    FSM_step();
   }
   /* USER CODE END 3 */
 }

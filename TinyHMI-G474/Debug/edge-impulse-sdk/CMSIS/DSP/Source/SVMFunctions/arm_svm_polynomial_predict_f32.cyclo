@@ -1,2 +1,2 @@
-C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/CMSIS/DSP/Include/dsp/svm_functions.h:65:27:arm_exponent_f32	2
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/CMSIS/DSP/Include/dsp/svm_functions.h:65:27:arm_exponent_f32	2
 ../edge-impulse-sdk/CMSIS/DSP/Source/SVMFunctions/arm_svm_polynomial_predict_f32.c:464:6:arm_svm_polynomial_predict_f32	3

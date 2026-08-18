@@ -14,7 +14,7 @@ extern "C" {
 /**
  * Public function to initialize the FMS
  */
-int8_t FSM_init();
+int8_t FSM_init(led_t* L_STATUS);
 /**
  * Public function to be called to evolve the FSM Status
  * This function allows to read the inputs and update the current status and the output

@@ -1,10 +1,10 @@
 edge-impulse-sdk/porting/stm32-cubeai/ei_classifier_porting.o: \
  ../edge-impulse-sdk/porting/stm32-cubeai/ei_classifier_porting.cpp \
  ../edge-impulse-sdk/porting/stm32-cubeai/../ei_classifier_porting.h \
- C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/dsp/returntypes.h \
- C:/progetti/embedded_systems/TinyHMI-G474/Core/Inc/main.h \
+ C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/dsp/returntypes.h \
+ C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/main.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h \
- C:/progetti/embedded_systems/TinyHMI-G474/Core/Inc/stm32g4xx_hal_conf.h \
+ C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/stm32g4xx_hal_conf.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h \
  ../Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h \
@@ -31,10 +31,10 @@ edge-impulse-sdk/porting/stm32-cubeai/ei_classifier_porting.o: \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h
 ../edge-impulse-sdk/porting/stm32-cubeai/../ei_classifier_porting.h:
-C:/progetti/embedded_systems/TinyHMI-G474/edge-impulse-sdk/dsp/returntypes.h:
-C:/progetti/embedded_systems/TinyHMI-G474/Core/Inc/main.h:
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/dsp/returntypes.h:
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/main.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
-C:/progetti/embedded_systems/TinyHMI-G474/Core/Inc/stm32g4xx_hal_conf.h:
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/stm32g4xx_hal_conf.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h:
 ../Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h:

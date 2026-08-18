@@ -124,8 +124,8 @@ all: main-build
 main-build: TinyHMI-G474.elf secondary-outputs
 
 # Tool invocations
-TinyHMI-G474.elf TinyHMI-G474.map: $(OBJS) $(USER_OBJS) C:\progetti\embedded_systems\TinyHMI-G474\STM32G474RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "TinyHMI-G474.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\progetti\embedded_systems\TinyHMI-G474\STM32G474RETX_FLASH.ld" -Wl,-Map="TinyHMI-G474.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+TinyHMI-G474.elf TinyHMI-G474.map: $(OBJS) $(USER_OBJS) C:\progetti\stm32-gesture-recognition\TinyHMI-G474\STM32G474RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "TinyHMI-G474.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\progetti\stm32-gesture-recognition\TinyHMI-G474\STM32G474RETX_FLASH.ld" -Wl,-Map="TinyHMI-G474.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
