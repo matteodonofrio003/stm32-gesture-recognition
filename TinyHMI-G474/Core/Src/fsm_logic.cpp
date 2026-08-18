@@ -8,6 +8,8 @@
 //GLOBAL VARIABLES
 extern UART_HandleTypeDef hlpuart1;
 char rx_buffer[100];
+char parsing_buffer[100];
+volatile uint8_t raw_data_ready = 0;
 queue_t imu_queue;
 float queue_buffer[60][6];
 signal_t features_signal;
@@ -128,20 +130,30 @@ int8_t FSM_step(){
 //**************************************************************************
 
 static int8_t FSM_read_inputs(){
-	int8_t res = FSM_OK;
-	float imu_data[6];
+    int8_t res = FSM_OK;
 
-	if(queue_extract(&imu_queue, imu_data) == QUEUE_OK)
-	{
-		memcpy(fsm.in.current_imu, imu_data, sizeof(imu_data));
-		fsm.in.new_data_available = 1;
-	}
-	else
-	{
-		fsm.in.new_data_available = 0;
-	}
+    if(raw_data_ready == 1) {
+        raw_data_ready = 0;
+        float imu_data[6];
+        int parsed = 0;
+        char* token = strtok(parsing_buffer, ",");
+        while((token != NULL) && (parsed < 6)) {
+            imu_data[parsed] = strtof(token, NULL);
+            parsed++;
+            token = strtok(NULL, ",");
+        }
 
-	return res;
+        if(parsed == 6) {
+            memcpy(fsm.in.current_imu, imu_data, sizeof(imu_data));
+            fsm.in.new_data_available = 1;
+        } else {
+            fsm.in.new_data_available = 0;
+        }
+
+    } else {
+        fsm.in.new_data_available = 0;
+    }
+    return res;
 }
 
 static int8_t FSM_update_state(){
@@ -247,39 +259,13 @@ static int8_t FSM_StateError() {
 //******	CALLBACKS (if needed)
 //**************************************************************************
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
-	if(huart->Instance != LPUART1)
-	{
-		return;
-	}
-
-	if(huart->RxEventType != HAL_UART_RXEVENT_IDLE)
-	{
-		return;
-	}
-
-	if(Size >= sizeof(rx_buffer))
-	{
-		Size = sizeof(rx_buffer) - 1;
-	}
-
-	rx_buffer[Size] = '\0';
-
-	float imu_data[6];
-	int parsed = 0;
-	char* token = strtok(rx_buffer, ",");
-	while((token != NULL) && (parsed < 6))
-	{
-		imu_data[parsed] = strtof(token, NULL);
-		parsed++;
-		token = strtok(NULL, ",");
-	}
-
-	if(parsed == 6)
-	{
-		queue_enqueue(&imu_queue, imu_data);
-	}
-
-	HAL_UARTEx_ReceiveToIdle_DMA(&hlpuart1, (uint8_t*)rx_buffer, sizeof(rx_buffer));
+    if(huart->Instance == LPUART1) {
+        if(Size >= sizeof(rx_buffer)) Size = sizeof(rx_buffer) - 1;
+        rx_buffer[Size] = '\0';
+        strncpy(parsing_buffer, rx_buffer, sizeof(parsing_buffer));
+        raw_data_ready = 1;
+        HAL_UARTEx_ReceiveToIdle_DMA(&hlpuart1, (uint8_t*)rx_buffer, sizeof(rx_buffer));
+    }
 }
 
 //callback to extract data from the array

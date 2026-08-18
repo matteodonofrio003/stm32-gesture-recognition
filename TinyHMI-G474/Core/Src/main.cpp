@@ -92,8 +92,8 @@ int main(void)
   MX_DMA_Init();
   MX_LPUART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  led_init(&L_STATUS, L_STATUS_GPIO_Port, L_STATUS_Pin, (led_state_t)LED_INIT_STATE_OFF);
-  FSM_init(&L_STATUS);
+  if(led_init(&L_STATUS, L_STATUS_GPIO_Port, L_STATUS_Pin, (led_state_t)LED_INIT_STATE_OFF) != LED_OK) return -1;
+  if(FSM_init(&L_STATUS) != FSM_OK) return -1;;
   /* USER CODE END 2 */
 
   /* Infinite loop */
