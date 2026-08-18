@@ -4,10 +4,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include "edge-impulse-sdk/classifier/ei_run_classifier.h"
+
+//GLOBAL VARIABLES
 extern UART_HandleTypeDef hlpuart1;
 char rx_buffer[100];
 queue_t imu_queue;
 float queue_buffer[60][6];
+signal_t features_signal;
 /**
  * Enumeration machine's states
  */
@@ -138,32 +141,74 @@ static int8_t FSM_read_inputs(){
 }
 
 static int8_t FSM_update_state(){
-	int8_t res = FSM_ERR;
+    int8_t res = FSM_OK;
 
-
-	switch(fsm.state)
-	{
-		default:
-			res = FSM_ERR;
-			break;
-	}
-	return res;
+    switch(fsm.state)
+    {
+        case INIT:       res = FSM_StateInit(); break;
+        case IDLE:       res = FSM_Idle(); break;
+        case BUFFERING:  res = FSM_Buffering(); break;
+        case INFERENCE:  res = FSM_Inference(); break;
+        case RESULT:     res = FSM_Result(); break;
+        case ERRORE:     res = FSM_StateError(); break;
+        default:
+            res = FSM_ERR;
+            break;
+    }
+    return res;
 }
 
 static int8_t FSM_StateInit() {
+	int8_t res = FSM_OK;
+
+	if(led_off(fsm.L_STATUS) != LED_OK) res = FSM_ERR;
+	fsm.state = IDLE;
+	return res;
 
 }
 
 static int8_t FSM_Idle() {
+	int8_t res = FSM_OK;
 
+	if(fsm.in.new_data_available) {
+		fsm.sample_count = 0;
+		fsm.state = BUFFERING;
+	}
+	return res;
 }
 
 static int8_t FSM_Buffering() {
+    int8_t res = FSM_OK;
 
+    if(fsm.in.new_data_available) {
+        uint16_t offset = fsm.sample_count * 6;
+
+        for(int i = 0; i < 6; i++)
+            fsm.inference_buffer[offset + i] = fsm.in.current_imu[i];
+        fsm.sample_count++;
+
+        if(fsm.sample_count >= (EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE / 6))
+            fsm.state = INFERENCE;
+    }
+    return res;
 }
 
 static int8_t FSM_Inference() {
+    int8_t res = FSM_OK;
+    ei_impulse_result_t result = { 0 };
 
+    features_signal.total_length = EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE;
+    features_signal.get_data = &raw_feature_get_data;
+    EI_IMPULSE_ERROR ei_res = run_classifier(&features_signal, &result, false);
+
+    if (ei_res != EI_IMPULSE_OK) {
+        fsm.state = ERRORE;
+        return FSM_ERR;
+    }
+
+    fsm.state = RESULT;
+
+    return res;
 }
 
 static int8_t FSM_Result() {
@@ -211,4 +256,10 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
 	}
 
 	HAL_UARTEx_ReceiveToIdle_DMA(&hlpuart1, (uint8_t*)rx_buffer, sizeof(rx_buffer));
+}
+
+//callback to extract data from the array
+int raw_feature_get_data(size_t offset, size_t length, float *out_ptr) {
+    memcpy(out_ptr, fsm.inference_buffer + offset, length * sizeof(float));
+    return 0;
 }
