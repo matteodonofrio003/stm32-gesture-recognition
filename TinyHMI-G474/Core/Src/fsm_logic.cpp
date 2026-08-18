@@ -13,6 +13,7 @@ volatile uint8_t raw_data_ready = 0;
 queue_t imu_queue;
 float queue_buffer[60][6];
 signal_t features_signal;
+
 /**
  * Enumeration machine's states
  */
@@ -123,6 +124,14 @@ int8_t FSM_step(){
 	}
 
 	return res;
+}
+
+/*
+ * Callback to extract data from the array
+ */
+int raw_feature_get_data(size_t offset, size_t length, float *out_ptr) {
+    memcpy(out_ptr, fsm.inference_buffer + offset, length * sizeof(float));
+    return 0;
 }
 
 //********************************************************************************
@@ -270,10 +279,4 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
         raw_data_ready = 1;
         HAL_UARTEx_ReceiveToIdle_DMA(&hlpuart1, (uint8_t*)rx_buffer, sizeof(rx_buffer));
     }
-}
-
-//callback to extract data from the array
-int raw_feature_get_data(size_t offset, size_t length, float *out_ptr) {
-    memcpy(out_ptr, fsm.inference_buffer + offset, length * sizeof(float));
-    return 0;
 }
