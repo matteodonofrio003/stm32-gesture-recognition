@@ -20,10 +20,6 @@ RM := rm -rf
 -include edge-impulse-sdk/tensorflow/lite/c/subdir.mk
 -include edge-impulse-sdk/porting/stm32-cubeai/subdir.mk
 -include edge-impulse-sdk/dsp/kissfft/subdir.mk
--include edge-impulse-sdk/dsp/image/subdir.mk
--include edge-impulse-sdk/dsp/dct/subdir.mk
--include edge-impulse-sdk/dsp/subdir.mk
--include edge-impulse-sdk/classifier/subdir.mk
 -include edge-impulse-sdk/CMSIS/NN/Source/SoftmaxFunctions/subdir.mk
 -include edge-impulse-sdk/CMSIS/NN/Source/SVDFunctions/subdir.mk
 -include edge-impulse-sdk/CMSIS/NN/Source/ReshapeFunctions/subdir.mk
@@ -125,7 +121,7 @@ main-build: TinyHMI-G474.elf secondary-outputs
 
 # Tool invocations
 TinyHMI-G474.elf TinyHMI-G474.map: $(OBJS) $(USER_OBJS) C:\progetti\stm32-gesture-recognition\TinyHMI-G474\STM32G474RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "TinyHMI-G474.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\progetti\stm32-gesture-recognition\TinyHMI-G474\STM32G474RETX_FLASH.ld" -Wl,-Map="TinyHMI-G474.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+	arm-none-eabi-g++ -o "TinyHMI-G474.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\progetti\stm32-gesture-recognition\TinyHMI-G474\STM32G474RETX_FLASH.ld" -Wl,-Map="TinyHMI-G474.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

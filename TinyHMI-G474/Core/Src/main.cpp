@@ -24,6 +24,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "stdio.h"
 #include "fsm_logic.h"
 #include "led.h"
 /* USER CODE END Includes */
@@ -91,7 +92,9 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_LPUART1_UART_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
+  setvbuf(stdout, NULL, _IONBF, 0);
   if(led_init(&L_STATUS, L_STATUS_GPIO_Port, L_STATUS_Pin, (led_state_t)LED_INIT_STATE_OFF) != LED_OK) return -1;
   if(FSM_init(&L_STATUS) != FSM_OK) return -1;;
   /* USER CODE END 2 */
@@ -149,7 +152,19 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+#ifdef __cplusplus
+extern "C" {
+#endif
 
+extern UART_HandleTypeDef hlpuart1;
+int _write(int file, char *ptr, int len) {
+    HAL_UART_Transmit(&hlpuart1, (uint8_t *)ptr, len, HAL_MAX_DELAY);
+    return len;
+}
+
+#ifdef __cplusplus
+}
+#endif
 /* USER CODE END 4 */
 
 /**

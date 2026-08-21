@@ -335,18 +335,19 @@ C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/classifier/e
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/classifier/ei_run_classifier.h:1063:29:EI_IMPULSE_ERROR {anonymous}::run_classifier(ei::signal_t*, ei_impulse_result_t*, bool)	24	static
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/classifier/ei_run_classifier.h:1096:42:EI_IMPULSE_ERROR {anonymous}::run_classifier(ei_impulse_handle_t*, ei::signal_t*, ei_impulse_result_t*, bool)	24	static
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/classifier/ei_run_classifier.h:1278:42:EI_IMPULSE_ERROR {anonymous}::run_impulse(ei_impulse_result_t*, std::function<void(float*, unsigned int)>, bool)	120	static
-../Core/Src/fsm_logic.cpp:85:8:int8_t FSM_init(led_t*)	24	static
-../Core/Src/fsm_logic.cpp:104:8:int8_t FSM_step()	24	static
-../Core/Src/fsm_logic.cpp:132:5:int raw_feature_get_data(size_t, size_t, float*)	24	static
-../Core/Src/fsm_logic.cpp:141:15:int8_t FSM_read_inputs()	56	static
-../Core/Src/fsm_logic.cpp:168:15:int8_t FSM_update_state()	16	static
-../Core/Src/fsm_logic.cpp:186:15:int8_t FSM_StateInit()	16	static
-../Core/Src/fsm_logic.cpp:195:15:int8_t FSM_Idle()	16	static
-../Core/Src/fsm_logic.cpp:205:15:int8_t FSM_Buffering()	16	static
-../Core/Src/fsm_logic.cpp:221:15:int8_t FSM_Inference()	136	static
-../Core/Src/fsm_logic.cpp:249:15:int8_t FSM_Result()	16	static
-../Core/Src/fsm_logic.cpp:263:15:int8_t FSM_StateError()	16	static
-../Core/Src/fsm_logic.cpp:274:6:void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef*, uint16_t)	16	static
+../Core/Src/fsm_logic.cpp:86:8:int8_t FSM_init(led_t*)	24	static
+../Core/Src/fsm_logic.cpp:105:8:int8_t FSM_step()	24	static
+../Core/Src/fsm_logic.cpp:133:5:int raw_feature_get_data(size_t, size_t, float*)	24	static
+../Core/Src/fsm_logic.cpp:142:15:int8_t FSM_read_inputs()	56	static
+../Core/Src/fsm_logic.cpp:180:15:int8_t FSM_update_state()	16	static
+../Core/Src/fsm_logic.cpp:198:15:int8_t FSM_StateInit()	16	static
+../Core/Src/fsm_logic.cpp:207:15:int8_t FSM_Idle()	16	static
+../Core/Src/fsm_logic.cpp:225:15:int8_t FSM_Buffering()	16	static
+../Core/Src/fsm_logic.cpp:243:15:int8_t FSM_Inference()	136	static
+../Core/Src/fsm_logic.cpp:273:15:int8_t FSM_Result()	16	static
+../Core/Src/fsm_logic.cpp:293:15:int8_t FSM_StateError()	16	static
+../Core/Src/fsm_logic.cpp:304:6:void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef*, uint16_t)	16	static
+../Core/Src/fsm_logic.cpp:314:6:void HAL_UART_ErrorCallback(UART_HandleTypeDef*)	16	static
 C:\ST\STM32CubeIDE_2.1.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740\tools\arm-none-eabi\include\c++\14.3.1\bits\std_function.h:239:5:constexpr std::_Function_base::_Function_base()	16	static
 C:\ST\STM32CubeIDE_2.1.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740\tools\arm-none-eabi\include\c++\14.3.1\bits\std_function.h:435:2:)>::function(_Functor&&) [with _Functor = void (&)(void*); _Constraints = void; _Res = void; _ArgTypes = {void*}]	24	static
 C:\ST\STM32CubeIDE_2.1.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740\tools\bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/include/c++/14.3.1/bits/unique_ptr.h:235:40:std::__uniq_ptr_data<void, std::function<void(void*)>, true, true>::__uniq_ptr_data(std::__uniq_ptr_impl<void, std::function<void(void*)> >::pointer, _Del&&) [with _Del = std::function<void(void*)>][inherited from std::__uniq_ptr_impl<void, std::function<void(void*)> >]	24	static
@@ -1479,7 +1480,7 @@ C:\ST\STM32CubeIDE_2.1.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externalt
 C:\ST\STM32CubeIDE_2.1.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740\tools\bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/include/c++/14.3.1/bits/move.h:137:5:constexpr typename std::remove_reference<_Tp>::type&& std::move(_Tp&&) [with _Tp = ei_impulse_result_bounding_box_t&]	16	static
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/dsp/ei_flatten.h:41:7:flatten_class::~flatten_class()	16	static
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/dsp/ei_flatten.h:41:7:virtual flatten_class::~flatten_class()	16	static
-../Core/Src/fsm_logic.cpp:282:1:void __static_initialization_and_destruction_0()	8	static
-../Core/Src/fsm_logic.cpp:282:1:void __static_initialization_and_destruction_1()	8	static
-../Core/Src/fsm_logic.cpp:282:1:cpp)	8	static
-../Core/Src/fsm_logic.cpp:282:1:cpp)	8	static
+../Core/Src/fsm_logic.cpp:320:1:void __static_initialization_and_destruction_0()	8	static
+../Core/Src/fsm_logic.cpp:320:1:void __static_initialization_and_destruction_1()	8	static
+../Core/Src/fsm_logic.cpp:320:1:cpp)	8	static
+../Core/Src/fsm_logic.cpp:320:1:cpp)	8	static

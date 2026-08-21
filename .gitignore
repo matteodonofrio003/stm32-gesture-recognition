@@ -11,6 +11,11 @@
 # Build outputs
 build/
 dist/
+*.elf
+*.hex
+*.bin
+*.map
+*.out
 *.o
 *.a
 *.lib

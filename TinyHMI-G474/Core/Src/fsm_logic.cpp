@@ -2,11 +2,12 @@
 #include "queue.h"
 #include "led.h"
 #include <string.h>
+#include "stdio.h"
 #include <stdlib.h>
 #include "edge-impulse-sdk/classifier/ei_run_classifier.h"
 
 //GLOBAL VARIABLES
-extern UART_HandleTypeDef hlpuart1;
+extern UART_HandleTypeDef huart3;
 char rx_buffer[100];
 char parsing_buffer[100];
 volatile uint8_t raw_data_ready = 0;
@@ -92,7 +93,7 @@ int8_t FSM_init(led_t* L_STATUS) {
 		fsm.winning_label[0] = '\0';
 		fsm.winning_confidence = 0.0f;
 		queue_init(&imu_queue, (uint8_t*)queue_buffer, 6 * sizeof(float), 60);
-		HAL_UARTEx_ReceiveToIdle_DMA(&hlpuart1, (uint8_t*)rx_buffer, 100);
+		HAL_UARTEx_ReceiveToIdle_DMA(&huart3, (uint8_t*)rx_buffer, sizeof(rx_buffer));
 	} else
 		res = FSM_ERR;
 	return res;
@@ -138,13 +139,16 @@ int raw_feature_get_data(size_t offset, size_t length, float *out_ptr) {
 //******	STATIC FUNCTIONS
 //**************************************************************************
 
-static int8_t FSM_read_inputs(){
+static int8_t FSM_read_inputs() {
     int8_t res = FSM_OK;
+    static uint32_t last_data_time = 0;
 
     if(raw_data_ready == 1) {
         raw_data_ready = 0;
+
         float imu_data[6];
         int parsed = 0;
+
         char* token = strtok(parsing_buffer, ",");
         while((token != NULL) && (parsed < 6)) {
             imu_data[parsed] = strtof(token, NULL);
@@ -155,13 +159,21 @@ static int8_t FSM_read_inputs(){
         if(parsed == 6) {
             memcpy(fsm.in.current_imu, imu_data, sizeof(imu_data));
             fsm.in.new_data_available = 1;
+            last_data_time = HAL_GetTick();
         } else {
             fsm.in.new_data_available = 0;
         }
 
     } else {
         fsm.in.new_data_available = 0;
+
+        if ((fsm.state == BUFFERING) && (HAL_GetTick() - last_data_time > 1000)) {
+             printf("\r\n[TIMEOUT] Dati persi. Annullo acquisizione e torno in IDLE.\r\n");
+             fsm.sample_count = 0;
+             fsm.state = IDLE;
+        }
     }
+
     return res;
 }
 
@@ -193,13 +205,21 @@ static int8_t FSM_StateInit() {
 }
 
 static int8_t FSM_Idle() {
-	int8_t res = FSM_OK;
+    int8_t res = FSM_OK;
 
-	if(fsm.in.new_data_available) {
-		fsm.sample_count = 0;
-		fsm.state = BUFFERING;
-	}
-	return res;
+    static uint32_t idle_timer = 0;
+    if (HAL_GetTick() - idle_timer > 1000) {
+        printf("FSM in IDLE... In attesa di Arduino\r\n");
+        idle_timer = HAL_GetTick();
+        led_toggle(fsm.L_STATUS);
+    }
+
+    if(fsm.in.new_data_available) {
+        printf("DATO RICEVUTO! Inizio Buffering...\r\n");
+        fsm.sample_count = 0;
+        fsm.state = BUFFERING;
+    }
+    return res;
 }
 
 static int8_t FSM_Buffering() {
@@ -207,13 +227,15 @@ static int8_t FSM_Buffering() {
 
     if(fsm.in.new_data_available) {
         uint16_t offset = fsm.sample_count * 6;
-
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 6; i++) {
             fsm.inference_buffer[offset + i] = fsm.in.current_imu[i];
+        }
         fsm.sample_count++;
 
-        if(fsm.sample_count >= (EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE / 6))
+        if(fsm.sample_count >= (EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE / 6)) {
             fsm.state = INFERENCE;
+            fsm.sample_count = 0;
+        }
     }
     return res;
 }
@@ -240,7 +262,9 @@ static int8_t FSM_Inference() {
     strncpy(fsm.winning_label, result.classification[best_index].label, sizeof(fsm.winning_label) - 1);
     fsm.winning_label[sizeof(fsm.winning_label) - 1] = '\0';
     fsm.winning_confidence = result.classification[best_index].value;
-
+    printf("PREDIZIONE: %s | Confidenza: %.1f %%\r\n",
+           fsm.winning_label,
+           fsm.winning_confidence * 100.0f);
     fsm.state = RESULT;
 
     return res;
@@ -255,6 +279,12 @@ static int8_t FSM_Result() {
         if (led_off(fsm.L_STATUS) != LED_OK) res = FSM_ERR;
     }
 
+    fsm.in.new_data_available = 0;
+    static uint32_t cooldown_timer = 0;
+    cooldown_timer = HAL_GetTick();
+    HAL_Delay(1000);
+    HAL_UART_AbortReceive(&huart3);
+    HAL_UARTEx_ReceiveToIdle_DMA(&huart3, (uint8_t*)rx_buffer, sizeof(rx_buffer));
     fsm.state = IDLE;
 
     return res;
@@ -272,11 +302,19 @@ static int8_t FSM_StateError() {
 //******	CALLBACKS (if needed)
 //**************************************************************************
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
-    if(huart->Instance == LPUART1) {
+    if(huart->Instance == USART3) {
         if(Size >= sizeof(rx_buffer)) Size = sizeof(rx_buffer) - 1;
         rx_buffer[Size] = '\0';
         strncpy(parsing_buffer, rx_buffer, sizeof(parsing_buffer));
         raw_data_ready = 1;
-        HAL_UARTEx_ReceiveToIdle_DMA(&hlpuart1, (uint8_t*)rx_buffer, sizeof(rx_buffer));
+        HAL_UARTEx_ReceiveToIdle_DMA(&huart3, (uint8_t*)rx_buffer, sizeof(rx_buffer));
+    }
+}
+
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart) {
+    if(huart->Instance == USART3) {
+        printf("\r\n[WARNING] UART Error %lu rilevato! Riavvio DMA...\r\n", huart->ErrorCode);
+        HAL_UART_AbortReceive(huart);
+        HAL_UARTEx_ReceiveToIdle_DMA(huart, (uint8_t*)rx_buffer, sizeof(rx_buffer));
     }
 }

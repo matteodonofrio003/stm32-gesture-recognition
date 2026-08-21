@@ -66,11 +66,7 @@ edge-impulse-sdk/CMSIS/NN/Source/PoolingFunctions \
 edge-impulse-sdk/CMSIS/NN/Source/ReshapeFunctions \
 edge-impulse-sdk/CMSIS/NN/Source/SVDFunctions \
 edge-impulse-sdk/CMSIS/NN/Source/SoftmaxFunctions \
-edge-impulse-sdk/classifier \
-edge-impulse-sdk/dsp/dct \
-edge-impulse-sdk/dsp/image \
 edge-impulse-sdk/dsp/kissfft \
-edge-impulse-sdk/dsp \
 edge-impulse-sdk/porting/stm32-cubeai \
 edge-impulse-sdk/tensorflow/lite/c \
 edge-impulse-sdk/tensorflow/lite/core/api \

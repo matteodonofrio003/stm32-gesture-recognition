@@ -9,7 +9,7 @@ extern "C" {
 #define FSM_ERR		(-1)
 #define FSM_OK		(0)
 
-#define FSM_CYCLE_DURATION		(100) //milliseconds
+#define FSM_CYCLE_DURATION		(5) //milliseconds
 
 /**
  * Public function to initialize the FMS
