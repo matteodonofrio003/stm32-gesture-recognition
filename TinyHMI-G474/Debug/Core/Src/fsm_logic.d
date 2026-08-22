@@ -26,6 +26,8 @@ Core/Src/fsm_logic.o: ../Core/Src/fsm_logic.cpp \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ramfunc.h \
+ ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_i2c.h \
+ ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_i2c_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
@@ -207,7 +209,8 @@ Core/Src/fsm_logic.o: ../Core/Src/fsm_logic.cpp \
  C:/progetti/stm32-gesture-recognition/TinyHMI-G474/model-parameters/model_variables.h \
  C:/progetti/stm32-gesture-recognition/TinyHMI-G474/model-parameters/model_metadata.h \
  C:/progetti/stm32-gesture-recognition/TinyHMI-G474/tflite-model/tflite_learn_1085473_8_compiled.h \
- C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/classifier/inferencing_engines/engines.h
+ C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/classifier/inferencing_engines/engines.h \
+ C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/i2c_lcd.h
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/fsm_logic.h:
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/led.h:
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/gpio.h:
@@ -235,6 +238,8 @@ C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/stm32g4xx_hal_conf.h
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ramfunc.h:
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_i2c.h:
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_i2c_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h:
@@ -417,3 +422,4 @@ C:/progetti/stm32-gesture-recognition/TinyHMI-G474/model-parameters/model_variab
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/model-parameters/model_metadata.h:
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/tflite-model/tflite_learn_1085473_8_compiled.h:
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/edge-impulse-sdk/classifier/inferencing_engines/engines.h:
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/i2c_lcd.h:

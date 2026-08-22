@@ -1,4 +1,4 @@
-../Core/Src/main.cpp:68:5:int main()	3
-../Core/Src/main.cpp:118:6:void SystemClock_Config()	3
-../Core/Src/main.cpp:160:5:int _write(int, char*, int)	1
-../Core/Src/main.cpp:174:6:void Error_Handler()	1
+../Core/Src/main.cpp:69:5:int main()	3
+../Core/Src/main.cpp:120:6:void SystemClock_Config()	3
+../Core/Src/main.cpp:162:5:int _write(int, char*, int)	1
+../Core/Src/main.cpp:176:6:void Error_Handler()	1

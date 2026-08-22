@@ -5,9 +5,11 @@
 #include "stdio.h"
 #include <stdlib.h>
 #include "edge-impulse-sdk/classifier/ei_run_classifier.h"
+#include "i2c_lcd.h"
 
 //GLOBAL VARIABLES
 extern UART_HandleTypeDef huart3;
+extern I2C_HandleTypeDef hi2c1;
 char rx_buffer[100];
 char parsing_buffer[100];
 volatile uint8_t raw_data_ready = 0;
@@ -168,7 +170,7 @@ static int8_t FSM_read_inputs() {
         fsm.in.new_data_available = 0;
 
         if ((fsm.state == BUFFERING) && (HAL_GetTick() - last_data_time > 1000)) {
-             printf("\r\n[TIMEOUT] Dati persi. Annullo acquisizione e torno in IDLE.\r\n");
+             printf("\r\n[TIMEOUT] Lost data -> Back to IDLE\r\n");
              fsm.sample_count = 0;
              fsm.state = IDLE;
         }
@@ -197,7 +199,12 @@ static int8_t FSM_update_state(){
 
 static int8_t FSM_StateInit() {
 	int8_t res = FSM_OK;
-
+	lcd_init(&hi2c1);
+	lcd_clear();
+	lcd_put_cur(0, 0);
+	lcd_send_string((char*)"TinyML HMI");
+	lcd_put_cur(1, 0);
+	lcd_send_string((char*)"Initialized!");
 	if(led_off(fsm.L_STATUS) != LED_OK) res = FSM_ERR;
 	fsm.state = IDLE;
 	return res;
@@ -209,13 +216,13 @@ static int8_t FSM_Idle() {
 
     static uint32_t idle_timer = 0;
     if (HAL_GetTick() - idle_timer > 1000) {
-        printf("FSM in IDLE... In attesa di Arduino\r\n");
+        printf("FSM in IDLE... Waiting for Arduino\r\n");
         idle_timer = HAL_GetTick();
         led_toggle(fsm.L_STATUS);
     }
 
     if(fsm.in.new_data_available) {
-        printf("DATO RICEVUTO! Inizio Buffering...\r\n");
+        printf("DATA RECEIVED! Start Buffering...\r\n");
         fsm.sample_count = 0;
         fsm.state = BUFFERING;
     }
@@ -262,7 +269,7 @@ static int8_t FSM_Inference() {
     strncpy(fsm.winning_label, result.classification[best_index].label, sizeof(fsm.winning_label) - 1);
     fsm.winning_label[sizeof(fsm.winning_label) - 1] = '\0';
     fsm.winning_confidence = result.classification[best_index].value;
-    printf("PREDIZIONE: %s | Confidenza: %.1f %%\r\n",
+    printf("PREDICTION: %s | Confidence: %.1f %%\r\n",
            fsm.winning_label,
            fsm.winning_confidence * 100.0f);
     fsm.state = RESULT;
@@ -282,6 +289,16 @@ static int8_t FSM_Result() {
     fsm.in.new_data_available = 0;
     static uint32_t cooldown_timer = 0;
     cooldown_timer = HAL_GetTick();
+
+    char row1[16];
+    char row2[16];
+    sprintf(row1, "Gesture: %-8s", fsm.winning_label);
+    sprintf(row2, "Conf : %.1f%%  ", fsm.winning_confidence * 100.0f);
+    lcd_put_cur(0, 0);
+    lcd_send_string(row1);
+    lcd_put_cur(1, 0);
+    lcd_send_string(row2);
+
     HAL_Delay(1000);
     HAL_UART_AbortReceive(&huart3);
     HAL_UARTEx_ReceiveToIdle_DMA(&huart3, (uint8_t*)rx_buffer, sizeof(rx_buffer));

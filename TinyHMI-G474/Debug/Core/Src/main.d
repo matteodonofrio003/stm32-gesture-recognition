@@ -23,12 +23,15 @@ Core/Src/main.o: ../Core/Src/main.cpp \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ramfunc.h \
+ ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_i2c.h \
+ ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_i2c_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
  C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/dma.h \
  C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/main.h \
+ C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/i2c.h \
  C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/usart.h \
  C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/gpio.h \
  C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/fsm_logic.h \
@@ -60,12 +63,15 @@ C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/stm32g4xx_hal_conf.h
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ramfunc.h:
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_i2c.h:
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_i2c_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h:
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/dma.h:
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/main.h:
+C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/i2c.h:
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/usart.h:
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/gpio.h:
 C:/progetti/stm32-gesture-recognition/TinyHMI-G474/Core/Inc/fsm_logic.h:
